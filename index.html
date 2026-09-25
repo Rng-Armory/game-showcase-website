@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Vault</title>
+    <meta
+      name="description"
+      content="A game showcase homepage with interactive bubbles, featured code snippets, and a chat section."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <div class="brand-mark">G</div>
+          <span>Game Vault</span>
+        </div>
+        <nav class="topnav" aria-label="Main navigation">
+          <a href="#games">Games</a>
+          <a href="#showcase">Showcase</a>
+          <a href="#chat">Chat</a>
+          <button id="submit-game-btn" class="submit-game-link" type="button">Submit Game</button>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">Play. Build. Repeat.</p>
+            <h1>Discover games I've built and shared in one gallery.</h1>
+            <p class="hero-text">
+              Browse my latest creations, click a bubble to open its project, inspect the code,
+              and dive into the community chat below. Submit your own games too!
+            </p>
+            <div class="cta-row">
+              <a class="primary-btn" href="#games">Explore games</a>
+              <button id="submit-game-btn-cta" class="ghost-btn" type="button">Submit Your Game</button>
+            </div>
+            <div class="stat-row" aria-label="Game stats">
+              <div>
+                <strong id="game-count">12</strong>
+                <span>Projects</span>
+              </div>
+              <div>
+                <strong>4.9</strong>
+                <span>Rating</span>
+              </div>
+              <div>
+                <strong>24/7</strong>
+                <span>Community</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-label="Featured game illustration">
+            <div class="orb orb-one"></div>
+            <div class="orb orb-two"></div>
+            <div class="floating-card">
+              <span class="pulse-dot"></span>
+              <div>
+                <small>Featured launch</small>
+                <strong>Neon Drift</strong>
+              </div>
+            </div>
+            <div class="game-window">
+              <div class="window-bar">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="screen-grid">
+                <div class="pixel pixel-a"></div>
+                <div class="pixel pixel-b"></div>
+                <div class="pixel pixel-c"></div>
+                <div class="pixel pixel-d"></div>
+                <div class="pixel pixel-e"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="games" class="games-section">
+          <div class="section-heading">
+            <p class="eyebrow">Collection</p>
+            <h2>Click a game bubble to inspect it</h2>
+            <p class="sort-info">📊 Sorted by most to least popular</p>
+          </div>
+          <div id="game-bubbles" class="game-bubbles" aria-live="polite"></div>
+        </section>
+
+        <section id="showcase" class="showcase">
+          <div class="showcase-panel">
+            <div class="project-preview">
+              <div class="preview-header">
+                <span class="preview-label">Preview</span>
+                <button class="play-button" type="button">Play demo</button>
+              </div>
+              <div id="preview-card" class="preview-card">
+                <div class="preview-screen">
+                  <div class="mini-characters">
+                    <span class="character one"></span>
+                    <span class="character two"></span>
+                    <span class="character three"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="code-panel">
+              <div class="code-header">
+                <p>Embedded code</p>
+                <span id="code-language">JavaScript</span>
+              </div>
+              <pre><code id="code-block"></code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section id="chat" class="chat-section">
+          <div class="section-heading chat-heading">
+            <p class="eyebrow">Community</p>
+            <h2>Need feedback or want to team up?</h2>
+          </div>
+
+          <div class="chat-card">
+            <div id="chat-window" class="chat-window" aria-live="polite">
+              <div class="message incoming">
+                <div class="avatar">A</div>
+                <div class="bubble">
+                  <span class="name">Avery</span>
+                  <p>Love the neon vibe in this project. Can we see a mobile version too?</p>
+                </div>
+              </div>
+
+              <div class="message outgoing">
+                <div class="bubble">
+                  <span class="name">You</span>
+                  <p>Absolutely — I'm refining the UI for touch controls next.</p>
+                </div>
+              </div>
+
+              <div class="message incoming">
+                <div class="avatar">J</div>
+                <div class="bubble">
+                  <span class="name">Jordan</span>
+                  <p>That boss fight is so slick. Are you posting the source soon?</p>
+                </div>
+              </div>
+            </div>
+
+            <form id="chat-form" class="chat-form">
+              <input
+                id="chat-input"
+                type="text"
+                placeholder="Type your message..."
+                aria-label="Type a message to chat"
+              />
+              <button type="submit">Send</button>
+            </form>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Sign-up Modal for Game Submission -->
+    <div id="signup-modal" class="modal" role="dialog" aria-labelledby="modal-title" hidden>
+      <div class="modal-overlay"></div>
+      <div class="modal-content">
+        <button id="close-modal" class="modal-close" type="button" aria-label="Close modal">×</button>
+        <h2 id="modal-title">Submit Your Game</h2>
+        <p class="modal-subtitle">Share your creation with the community</p>
+        
+        <form id="game-form" class="game-form">
+          <div class="form-group">
+            <label for="game-name">Game Name</label>
+            <input type="text" id="game-name" placeholder="e.g., Neon Drift" required />
+          </div>
+
+          <div class="form-group">
+            <label for="game-tag">Category</label>
+            <select id="game-tag" required>
+              <option value="">Select a category</option>
+              <option value="Arcade">Arcade</option>
+              <option value="Adventure">Adventure</option>
+              <option value="Puzzle">Puzzle</option>
+              <option value="RPG">RPG</option>
+              <option value="Strategy">Strategy</option>
+              <option value="Runner">Runner</option>
+              <option value="Action">Action</option>
+              <option value="Casual">Casual</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="game-icon">Game Icon (Emoji)</label>
+            <input type="text" id="game-icon" placeholder="🎮" maxlength="2" required />
+          </div>
+
+          <div class="form-group">
+            <label for="game-summary">Description</label>
+            <textarea id="game-summary" placeholder="Describe your game..." rows="3" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="game-code">Code Snippet</label>
+            <textarea id="game-code" placeholder="Paste your code here..." rows="5" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="game-language">Language</label>
+            <select id="game-language" required>
+              <option value="">Select a language</option>
+              <option value="JavaScript">JavaScript</option>
+              <option value="TypeScript">TypeScript</option>
+              <option value="Python">Python</option>
+              <option value="C#">C#</option>
+              <option value="Rust">Rust</option>
+              <option value="CSS">CSS</option>
+              <option value="HTML">HTML</option>
+              <option value="Java">Java</option>
+              <option value="C++">C++</option>
+            </select>
+          </div>
+
+          <button type="submit" class="submit-btn">Post Your Game</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
